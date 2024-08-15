@@ -387,6 +387,9 @@ def recognition_app():
                                   media_stream_constraints={
                                       "video": True,
                                       "audio": False, },
+                                  rtc_configuration={  # Add this line
+                                      "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+                                  }
                                   )
         with videoColmns2:
             st.markdown('<nobr><p style="text-align: left;font-family:sans serif;'
