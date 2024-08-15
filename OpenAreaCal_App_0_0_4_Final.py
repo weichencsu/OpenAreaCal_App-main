@@ -518,6 +518,7 @@ def recognition_app():
             result_image = Image.new("RGBA", (649, 396), bg_color)
 
             if st.session_state.submitted_image2 is not None or bg_image:
+                st.image(bg_image_canvas1)
                 background = bg_image_canvas1
                 result_image.paste(background, (0, 0))
                 result_image2 = background
