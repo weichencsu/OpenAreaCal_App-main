@@ -894,7 +894,7 @@ def analysis_app():
     st.markdown('<nobr><p style="text-align: left;font-family:sans serif;'
                 ' color:Black; font-size: 15px; ">Total Open Area Analysis:</p></nobr>', unsafe_allow_html=True)
     # 获取.\\Data_Export目录下的所有Excel文件
-    excel_files = [f for f in os.listdir('.\\Data_Export') if f.endswith('.xlsx')]
+    excel_files = [f for f in os.listdir('./Data_Export') if f.endswith('.xlsx')]
 
     # 提取所有不重复的日期
     dates = set()
