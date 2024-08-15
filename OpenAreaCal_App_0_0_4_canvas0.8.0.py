@@ -505,7 +505,7 @@ def recognition_app():
             height=396,
             width=649,
             drawing_mode="polygon",
-            point_display_radius=0,
+            #  point_display_radius=0,
             display_toolbar=True,
             key="full_app",
         )
@@ -523,7 +523,7 @@ def recognition_app():
                 result_image2 = result_image
 
             # Paste the drawn content onto the background
-            draw_image = Image.fromarray(canvas_result.image_data)
+            draw_image = Image.fromarray(canvas_result.image_data.astype(np.uint8))
             result_image.paste(draw_image, (0, 0), draw_image)
 
             # Process polygons
@@ -582,7 +582,7 @@ def recognition_app():
             height=396,
             width=649,
             drawing_mode="polygon",
-            point_display_radius=0,
+            #  point_display_radius=0,
             display_toolbar=True,
             key="full_app_inverse",
         )
@@ -594,7 +594,7 @@ def recognition_app():
                 result_image.paste(background, (0, 0))
 
             # Paste the drawn content onto the background
-            draw_image = Image.fromarray(canvas_result_inverse.image_data)
+            draw_image = Image.fromarray(canvas_result_inverse.image_data.astype(np.uint8))
             result_image.paste(draw_image, (0, 0), draw_image)
 
             # Process polygons
