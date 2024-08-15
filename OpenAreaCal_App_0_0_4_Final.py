@@ -489,13 +489,10 @@ def recognition_app():
 
         if st.session_state.submitted_image2 is not None:
             bg_image_canvas1 = Image.fromarray(cv2.cvtColor(st.session_state.submitted_image2, cv2.COLOR_BGR2RGB)).resize((649, 396))
-            st.write('bg_image_canvas1 0')
         elif bg_image:
             bg_image_canvas1 = Image.open(bg_image).resize((649, 396))
-            st.write('bg_image_canvas1 1')
         else:
             bg_image_canvas1 = Image.new("RGBA", (649, 396), "#eee")
-            st.write('bg_image_canvas1 2')
 
         # Create a canvas component
         canvas_result = st_canvas(
