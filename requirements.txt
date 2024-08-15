@@ -3,7 +3,7 @@ pandas==2.0.3
 numpy
 streamlit_webrtc==0.47.7
 streamlit_option_menu==0.3.13
-opencv-python-headless==4.8.0.74
+opencv-python-headless==4.8.0.76
 streamlit_drawable_canvas
 Pillow==8.2.0
 typing
