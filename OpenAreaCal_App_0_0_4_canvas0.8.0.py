@@ -513,7 +513,7 @@ def recognition_app():
         # Do something interesting with the image data and paths
         if canvas_result.image_data is not None:
             result_image = Image.new("RGBA", (649, 396), bg_color)
-            st.write('submitted_image2' in st.session_state)
+            #  st.write('submitted_image2' in st.session_state)
             if st.session_state.submitted_image2 is not None or bg_image:
                 st.image(bg_image_canvas1)
                 background = bg_image_canvas1
