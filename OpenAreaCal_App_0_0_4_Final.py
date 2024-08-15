@@ -464,8 +464,8 @@ def recognition_app():
                     """,
                     unsafe_allow_html=True
                 )
-    st.image(st.session_state.submitted_image)
-    st.image(st.session_state.submitted_image2)
+    st.image(Image.fromarray(st.session_state.submitted_image))
+    st.image(Image.fromarray(st.session_state.submitted_image2))
     
     st.markdown('<nobr><p style="text-align: left;font-family:sans serif;'
                 ' color:Black; font-size: 15px; ">Or select an existing grates image</p></nobr>',
