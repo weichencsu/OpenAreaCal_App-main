@@ -4,7 +4,7 @@ numpy
 streamlit_webrtc==0.47.7
 streamlit_option_menu==0.3.13
 opencv-python-headless==4.8.0.74
-streamlit_drawable_canvas==0.9.3
+streamlit_drawable_canvas
 Pillow==8.2.0
 typing
 datetime
