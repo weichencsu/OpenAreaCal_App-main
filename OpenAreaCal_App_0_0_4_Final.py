@@ -376,6 +376,15 @@ def recognition_app():
 
     st.markdown('---')
 
+    if 'snapshot_clicked' not in st.session_state:
+        st.session_state.snapshot_clicked = False
+    if 'submitted_image' not in st.session_state:
+        st.session_state.submitted_image = None
+    if 'submitted_image2' not in st.session_state:
+        st.session_state.submitted_image2 = None
+    if 'snapshot_image' not in st.session_state:
+        st.session_state.snapshot_image = None
+
     videoContainer = st.container()
     with videoContainer:
         videoColmns1, videoColmns2 = st.columns([1, 1], gap='small')
@@ -388,21 +397,16 @@ def recognition_app():
                                       "video": True,
                                       "audio": False, },
                                   rtc_configuration={  # Add this line
-                                      "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+                                      "iceServers": [{"urls": ["stun:stun1.l.google.com:19302"
+                                                               ]}]  # "stun.flashdance.cx:3478"
+                                      # "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
                                   }
                                   )
         with videoColmns2:
             st.markdown('<nobr><p style="text-align: left;font-family:sans serif;'
                         ' color:Black; font-size: 15px; margin-bottom: 24px;">Snapshot display</p></nobr>',
                         unsafe_allow_html=True)
-            if 'snapshot_clicked' not in st.session_state:
-                st.session_state.snapshot_clicked = False
-            if 'submitted_image' not in st.session_state:
-                st.session_state.submitted_image = None
-            if 'submitted_image2' not in st.session_state:
-                st.session_state.submitted_image2 = None
-            if 'snapshot_image' not in st.session_state:
-                st.session_state.snapshot_image = None
+
 
             if ctx.video_processor:
                 # 创建一个空白的占位符
@@ -905,23 +909,24 @@ def analysis_app():
     # 将日期排序
     sorted_dates = sorted(dates, key=lambda x: datetime.datetime.strptime(x, '%d-%b-%Y'), reverse=True)
 
+    r4col1, r4col2 = st.columns([2.15, 1.0], gap='medium')
     # 添加日期选择框
-    selected_date = st.selectbox('Select Date:', sorted_dates)
-
+    selected_date = r4col1.selectbox('Select Date:', sorted_dates)
+    tons_data = []
     de_container = st.container()
     with de_container:
         r5col1, r5col2, r5col3 = st.columns(3)
         miss_data_type = []
-        tons_data = []
+
         with r5col1:
             file_22mm = f'22mm Grate_{selected_date}.xlsx'
             file_22mm_path = os.path.join('.\\Data_Export', file_22mm)
             total_days1, total_area1, total_tons1 = get_total_days(file_22mm_path)
             if os.path.exists(file_22mm_path):
-                install_date1 = r5col1.metric('22mm Outer Grate Inspection:', total_days1)
+                # install_date1 = r5col1.metric('22mm Outer Grate Inspection:', total_days1)
                 tons_data.append(total_tons1)
             else:
-                install_date1 = r5col1.metric('22mm Outer Grate Inspection:', 'No data',)
+                # install_date1 = r5col1.metric('22mm Outer Grate Inspection:', 'No data',)
                 miss_data_type.append('22mm Outer Grate')
 
             install_num1 = r5col1.text_input('22mm Outer Grate Number:', '0')
@@ -931,10 +936,10 @@ def analysis_app():
             file_65mm_path = os.path.join('.\\Data_Export', file_65mm)
             total_days2, total_area2, total_tons2 = get_total_days(file_65mm_path)
             if os.path.exists(file_65mm_path):
-                install_date2 = r5col2.metric('65mm Pebble Grate Inspection:', total_days2)
+                # install_date2 = r5col2.metric('65mm Pebble Grate Inspection:', total_days2)
                 tons_data.append(total_tons2)
             else:
-                install_date2 = r5col2.metric('65mm Pebble Grate Inspection:', 'No data',)
+                # install_date2 = r5col2.metric('65mm Pebble Grate Inspection:', 'No data',)
                 miss_data_type.append('65mm Pebble Grate')
             install_num2 = r5col2.text_input('65mm Pebble Grate Number:', '0')
 
@@ -943,12 +948,15 @@ def analysis_app():
             file_22mm_middle_path = os.path.join('.\\Data_Export', file_22mm_middle)
             total_days3, total_area3, total_tons3 = get_total_days(file_22mm_middle_path)
             if os.path.exists(file_22mm_middle_path):
-                install_date3 = r5col3.metric('22mm Middle Grate Inspection:', total_days3)
+                # install_date3 = r5col3.metric('22mm Middle Grate Inspection:', total_days3)
                 tons_data.append(total_tons3)
             else:
-                install_date3 = r5col3.metric('22mm Middle Grate Inspection:', 'No data',)
+                # install_date3 = r5col3.metric('22mm Middle Grate Inspection:', 'No data',)
                 miss_data_type.append('22mm Middle Grate')
             install_num3 = r5col3.text_input('22mm Middle Grate Number:', '0')
+
+    if len(tons_data) !=0:
+        r4col2.metric('Total Tons Milled:', tons_data[0])
 
     st.markdown("###")
     OA_button = st.button("Calculate Total Open Area and Predict Recycle Rate")
