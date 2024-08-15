@@ -920,7 +920,7 @@ def analysis_app():
 
         with r5col1:
             file_22mm = f'22mm Grate_{selected_date}.xlsx'
-            file_22mm_path = os.path.join('.\\Data_Export', file_22mm)
+            file_22mm_path = os.path.join('./Data_Export', file_22mm)
             total_days1, total_area1, total_tons1 = get_total_days(file_22mm_path)
             if os.path.exists(file_22mm_path):
                 # install_date1 = r5col1.metric('22mm Outer Grate Inspection:', total_days1)
@@ -933,7 +933,7 @@ def analysis_app():
 
         with r5col2:
             file_65mm = f'65mm Pebble Grate_{selected_date}.xlsx'
-            file_65mm_path = os.path.join('.\\Data_Export', file_65mm)
+            file_65mm_path = os.path.join('./Data_Export', file_65mm)
             total_days2, total_area2, total_tons2 = get_total_days(file_65mm_path)
             if os.path.exists(file_65mm_path):
                 # install_date2 = r5col2.metric('65mm Pebble Grate Inspection:', total_days2)
@@ -945,7 +945,7 @@ def analysis_app():
 
         with r5col3:
             file_22mm_middle = f'22mm middle Grate_{selected_date}.xlsx'
-            file_22mm_middle_path = os.path.join('.\\Data_Export', file_22mm_middle)
+            file_22mm_middle_path = os.path.join('./Data_Export', file_22mm_middle)
             total_days3, total_area3, total_tons3 = get_total_days(file_22mm_middle_path)
             if os.path.exists(file_22mm_middle_path):
                 # install_date3 = r5col3.metric('22mm Middle Grate Inspection:', total_days3)
