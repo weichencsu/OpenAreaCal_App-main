@@ -5,15 +5,12 @@ import numpy as np
 import datetime
 from streamlit_webrtc import VideoProcessorBase, webrtc_streamer
 from streamlit_option_menu import option_menu
-import plotly.graph_objects as go
 import av
 import cv2
 import time
-import math
 import threading
 from typing import Union
 from PIL import Image
-from collections import Counter
 from streamlit_drawable_canvas import st_canvas
 import os
 
